@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { configValidationSchema } from '../../../libs/common/src/config/config.schema';
+import { configValidationSchema } from '../../../libs/common/src/index';
+import { DatabaseModule } from '../../../libs/database/src/index';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { configValidationSchema } from '../../../libs/common/src/config/config.s
         abortEarly: false,
       },
     }),
+    DatabaseModule,
   ],
 })
 export class ApiGatewayModule { }
