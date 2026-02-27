@@ -2,8 +2,36 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "outDir": "../../dist/apps/api-gateway"
+    "outDir": "../../dist/apps/api-gateway",
+    "baseUrl": "../../",
+    "paths": {
+      "@logitrack/common": [
+        "libs/common/src/index.ts"
+      ],
+      "@logitrack/common/*": [
+        "libs/common/src/*"
+      ],
+      "@logitrack/database": [
+        "libs/database/src/index.ts"
+      ],
+      "@logitrack/database/*": [
+        "libs/database/src/*"
+      ],
+      "@logitrack/firebase": [
+        "libs/firebase/src/index.ts"
+      ],
+      "@logitrack/firebase/*": [
+        "libs/firebase/src/*"
+      ]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "**/*spec.ts"
+  ]
 }
