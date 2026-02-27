@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@logitrack/common": [
+        "libs/common/src/index.ts"
+      ],
+      "@logitrack/common/*": [
+        "libs/common/src/*"
+      ],
+      "@logitrack/database": [
+        "libs/database/src/index.ts"
+      ],
+      "@logitrack/database/*": [
+        "libs/database/src/*"
+      ],
+      "@logitrack/firebase": [
+        "libs/firebase/src/index.ts"
+      ],
+      "@logitrack/firebase/*": [
+        "libs/firebase/src/*"
+      ]
+    }
+  }
+}
