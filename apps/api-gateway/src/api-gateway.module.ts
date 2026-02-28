@@ -4,6 +4,7 @@ import { configValidationSchema } from '../../../libs/common/src/index';
 import { DatabaseModule } from '../../../libs/database/src/index';
 import { CommonModule } from '../../../libs/common/src/index';
 import { FirebaseModule } from '../../../libs/firebase/src/index';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { FirebaseModule } from '../../../libs/firebase/src/index';
     DatabaseModule,
     CommonModule,
     FirebaseModule,
+    AuthModule,
   ],
 })
 export class ApiGatewayModule { }
