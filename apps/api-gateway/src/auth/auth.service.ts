@@ -26,17 +26,19 @@ export class AuthService {
         const decodedToken = await this.verifyFirebaseToken(idToken);
         const { uid, email, phone_number, name, picture } = decodedToken;
 
-        let user = await this.userModel.findOne({ firebaseUid: uid });
-
-        if (!user) {
-            user = await this.userModel.create({
-                firebaseUid: uid,
-                email: email,
-                phoneNumber: phone_number,
-                fullName: name,
-                avatarUrl: picture,
-            });
-        }
+        let user = await this.userModel.findOneAndUpdate(
+            { firebaseUid: uid },
+            {
+                $setOnInsert: {
+                    firebaseUid: uid,
+                    email: email,
+                    phoneNumber: phone_number,
+                    fullName: name,
+                    avatarUrl: picture,
+                }
+            },
+            { new: true, upsert: true }
+        );
 
         if (!user.isActive) {
             throw new UnauthorizedException('User account is deactivated');
