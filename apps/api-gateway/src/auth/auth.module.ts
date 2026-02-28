@@ -27,6 +27,6 @@ import { FirebaseModule } from '@logitrack/firebase';
     ],
     controllers: [AuthController],
     providers: [AuthService, JwtStrategy],
-    exports: [AuthService, JwtModule]
+    exports: [AuthService, JwtModule, MongooseModule]
 })
 export class AuthModule { }

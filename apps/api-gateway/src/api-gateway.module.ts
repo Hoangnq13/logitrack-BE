@@ -5,6 +5,7 @@ import { DatabaseModule } from '@logitrack/database';
 import { CommonModule } from '@logitrack/common';
 import { FirebaseModule } from '@logitrack/firebase';
 import { AuthModule } from './auth/auth.module';
+import { DriverModule } from './driver/driver.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     CommonModule,
     FirebaseModule,
     AuthModule,
+    DriverModule,
   ],
 })
 export class ApiGatewayModule { }
