@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { configValidationSchema } from '../../../libs/common/src/index';
-import { DatabaseModule } from '../../../libs/database/src/index';
-import { CommonModule } from '../../../libs/common/src/index';
-import { FirebaseModule } from '../../../libs/firebase/src/index';
+import { configValidationSchema } from '@logitrack/common';
+import { DatabaseModule } from '@logitrack/database';
+import { CommonModule } from '@logitrack/common';
+import { FirebaseModule } from '@logitrack/firebase';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
