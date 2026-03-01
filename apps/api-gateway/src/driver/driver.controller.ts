@@ -21,8 +21,7 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { Role } from '../auth/enums/role.enum';
 
 @Controller('drivers')
-// [TEMP] Bypassing auth for testing Driver App
-// @UseGuards(JwtAuthGuard, RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class DriverController {
   constructor(
     private readonly driverService: DriverService,
@@ -57,6 +56,13 @@ export class DriverController {
   @Roles(Role.ADMIN, Role.DISPATCHER)
   findAvailable() {
     return this.driverService.findAvailable();
+  }
+
+  @Get(':id/orders')
+  @Roles(Role.ADMIN, Role.DISPATCHER, Role.DRIVER)
+  findOrders(@Param('id') id: string) {
+    // [TODO/STUB]: Trả về mảng rỗng vì Order module sẽ được làm ở Sprint 3
+    return [];
   }
 
   @Get(':id')

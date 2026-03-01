@@ -26,7 +26,7 @@ export class VehicleDto {
 }
 
 export class CreateDriverDto {
-  @IsMongoId()
+  @IsString()
   @IsNotEmpty()
   user: string;
 

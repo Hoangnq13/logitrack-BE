@@ -11,7 +11,7 @@ export class AuthService {
     @Inject('FIREBASE_AUTH') private readonly firebaseAuth: admin.auth.Auth,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async verifyFirebaseToken(idToken: string) {
     try {
@@ -51,5 +51,10 @@ export class AuthService {
       accessToken,
       user,
     };
+  }
+
+  async findAllUsers() {
+    // Returns basic user details so frontend can populate the dropdown
+    return this.userModel.find({}, 'email fullName firebaseUid roles isActive').exec();
   }
 }

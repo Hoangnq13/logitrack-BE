@@ -4,25 +4,41 @@ import {
   ConflictException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, isValidObjectId } from 'mongoose';
 import { Driver, DriverDocument } from './schemas/driver.schema';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
+import { User, UserDocument } from '../auth/schemas/user.schema';
 
 @Injectable()
 export class DriverService {
   constructor(
     @InjectModel(Driver.name) private driverModel: Model<DriverDocument>,
-  ) {}
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+  ) { }
 
   async create(createDriverDto: CreateDriverDto): Promise<Driver> {
+    const inputUser = createDriverDto.user;
+    let userId: any = inputUser;
+
+    if (!isValidObjectId(inputUser)) {
+      const userDoc = await this.userModel.findOne({ firebaseUid: inputUser });
+      if (!userDoc) {
+        throw new NotFoundException(`Không tìm thấy User có Firebase UID: ${inputUser}`);
+      }
+      userId = userDoc._id;
+    }
+
     const existingDriver = await this.driverModel.findOne({
-      user: createDriverDto.user as any,
+      user: userId,
     });
     if (existingDriver) {
       throw new ConflictException('Người dùng này đã trở thành Tài xế');
     }
-    const createdDriver = new this.driverModel(createDriverDto);
+    const createdDriver = new this.driverModel({
+      ...createDriverDto,
+      user: userId,
+    });
     return createdDriver.save();
   }
 

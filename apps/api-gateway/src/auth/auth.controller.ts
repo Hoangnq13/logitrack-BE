@@ -8,7 +8,7 @@ import { Role } from './enums/role.enum';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('login')
   async login(@Body('idToken') idToken: string) {
@@ -23,5 +23,12 @@ export class AuthController {
       message: 'Success: You have ADMIN role.',
       user,
     };
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
+  @Get('users')
+  async getAllUsers() {
+    return this.authService.findAllUsers();
   }
 }

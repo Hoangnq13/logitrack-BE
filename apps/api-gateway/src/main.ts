@@ -1,8 +1,16 @@
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { ApiGatewayModule } from './api-gateway.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiGatewayModule);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
 
   app.enableCors({
     // Cho phép cổng 8080 (HTML test cũ) và 3001 (Next.js FE mới)
