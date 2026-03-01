@@ -6,17 +6,17 @@ import { ConfigModule } from '@nestjs/config';
 
 @Global()
 @Module({
-    imports: [ConfigModule],
-    providers: [
-        {
-            provide: APP_FILTER,
-            useClass: AllExceptionsFilter,
-        },
-        {
-            provide: APP_INTERCEPTOR,
-            useClass: TransformInterceptor,
-        },
-    ],
-    exports: [],
+  imports: [ConfigModule],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
+    },
+  ],
+  exports: [],
 })
-export class CommonModule { }
+export class CommonModule {}

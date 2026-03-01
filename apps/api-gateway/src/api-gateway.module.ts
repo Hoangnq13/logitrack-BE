@@ -25,4 +25,4 @@ import { DriverModule } from './driver/driver.module';
     DriverModule,
   ],
 })
-export class ApiGatewayModule { }
+export class ApiGatewayModule {}

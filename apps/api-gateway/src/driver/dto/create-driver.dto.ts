@@ -1,31 +1,37 @@
-import { IsString, IsNotEmpty, IsOptional, ValidateNested, IsMongoId } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsOptional,
+  ValidateNested,
+  IsMongoId,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class VehicleDto {
-    @IsString()
-    @IsNotEmpty()
-    plateNumber: string;
+  @IsString()
+  @IsNotEmpty()
+  plateNumber: string;
 
-    @IsString()
-    @IsNotEmpty()
-    model: string;
+  @IsString()
+  @IsNotEmpty()
+  model: string;
 
-    @IsString()
-    @IsOptional()
-    color?: string;
+  @IsString()
+  @IsOptional()
+  color?: string;
 
-    @IsString()
-    @IsOptional()
-    type?: string;
+  @IsString()
+  @IsOptional()
+  type?: string;
 }
 
 export class CreateDriverDto {
-    @IsMongoId()
-    @IsNotEmpty()
-    user: string;
+  @IsMongoId()
+  @IsNotEmpty()
+  user: string;
 
-    @ValidateNested()
-    @Type(() => VehicleDto)
-    @IsNotEmpty()
-    vehicle: VehicleDto;
+  @ValidateNested()
+  @Type(() => VehicleDto)
+  @IsNotEmpty()
+  vehicle: VehicleDto;
 }

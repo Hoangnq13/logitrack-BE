@@ -1,6 +1,6 @@
 export enum Role {
-    ADMIN = 'ADMIN',
-    DISPATCHER = 'DISPATCHER',
-    DRIVER = 'DRIVER',
-    CUSTOMER = 'CUSTOMER',
+  ADMIN = 'ADMIN',
+  DISPATCHER = 'DISPATCHER',
+  DRIVER = 'DRIVER',
+  CUSTOMER = 'CUSTOMER',
 }

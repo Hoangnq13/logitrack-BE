@@ -1,11 +1,11 @@
 import { IsNumber, IsNotEmpty } from 'class-validator';
 
 export class UpdateLocationDto {
-    @IsNumber()
-    @IsNotEmpty()
-    lat: number;
+  @IsNumber()
+  @IsNotEmpty()
+  lat: number;
 
-    @IsNumber()
-    @IsNotEmpty()
-    lng: number;
+  @IsNumber()
+  @IsNotEmpty()
+  lng: number;
 }

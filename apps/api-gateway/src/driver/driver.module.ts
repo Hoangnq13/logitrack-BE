@@ -12,6 +12,6 @@ import { AuthModule } from '../auth/auth.module';
     AuthModule,
   ],
   controllers: [DriverController],
-  providers: [DriverService, DriverLocationService]
+  providers: [DriverService, DriverLocationService],
 })
-export class DriverModule { }
+export class DriverModule {}
